@@ -9,11 +9,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-regular-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
     "axios": "^1.7.9",
     "glslify": "^7.1.1",
     "openai": "^4.77.0",
     "three": "^0.172.0",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "vue-svg-loader": "^0.16.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",

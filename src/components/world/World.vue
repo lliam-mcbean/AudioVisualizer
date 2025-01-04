@@ -5,7 +5,6 @@ import Normalize from './normalize/Normalize.vue';
 import Reverb from './reverb/Reverb.vue';
 import Bars from './bars/Bars.vue';
 import GridBars from './gridbars/GridBars.vue';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 const props = defineProps({
     volume: Number
@@ -15,7 +14,6 @@ let scene = new THREE.Scene()
 let time = ref(0)
 let camera, renderer;
 
-// Provide scene context for child components
 provide('scene', scene);
 
 const initThree = () => {
@@ -25,10 +23,6 @@ const initThree = () => {
   renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
-
-  const controls = new OrbitControls(camera, renderer.domElement)
-
-  controls.update()
 
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -55,7 +49,7 @@ onMounted(() => {
   <div>
     <Normalize :time="time" :volume="props.volume" />
     <!-- <Reverb :time="time" :volume="props.volume" /> -->
-    <!-- <Bars :volume="props.volume" /> -->
+    <Bars :volume="props.volume" />
     <!-- <GridBars :volume="props.volume" /> -->
   </div>
 </template>
