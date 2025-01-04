@@ -13,19 +13,25 @@
 
 </script>
 <template lang="">
-    <div class="h-screen absolute w-[50px] flex items-center">
+    <div class="h-screen absolute w-[50px] flex items-center z-50">
         <div class="left-0 w-full text-2xl">
             <div 
                 @click="selectItem(normalized)" 
-                class="h-[50px] w-full cursor-pointer border border-2 border-white text-white flex justify-center items-center hover:text-yellow-500 hover:border-yellow-500"
-                :class="{'text-blue-500 border-blue-500': normalized.value}"
+                class="h-[50px] w-full cursor-pointer border border-2 flex justify-center items-center hover:text-[#ffffc5] hover:border-[#ffffc5]"
+                :class="{
+                    'text-[#7bcceb] border-[#7bcceb]': normalized.value,
+                    'border-white text-white' : !normalized.value
+                }"
             >
                 <font-awesome-icon :icon="['far','circle']" />
             </div>
             <div 
                 @click="selectItem(bars)" 
-                class="h-[50px] w-full cursor-pointer border border-2 border-white text-white flex justify-center items-center hover:text-yellow-500 hover:border-yellow-500"
-                :class="{'text-blue-500 border-blue-500': bars.value}"
+                class="h-[50px] w-full cursor-pointer border border-2 flex justify-center items-center hover:text-[#ffffc5] hover:border-[#ffffc5]"
+                :class="{
+                    'text-[#7bcceb] border-[#7bcceb]': bars.value,
+                    'border-white text-white' : !bars.value
+                }"
             >
                 <font-awesome-icon :icon="['far','square']" />
             </div>

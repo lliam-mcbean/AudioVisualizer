@@ -5,6 +5,8 @@ import Normalize from './normalize/Normalize.vue';
 import Reverb from './reverb/Reverb.vue';
 import Bars from './bars/Bars.vue';
 import GridBars from './gridbars/GridBars.vue';
+import Trails from './trails/Trails.vue';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 const props = defineProps({
     volume: Number
@@ -29,6 +31,10 @@ const initThree = () => {
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
+
+  const controls = new OrbitControls( camera, renderer.domElement );
+  controls.update()
+
   const clock = new THREE.Clock()
   const animate = () => {
     time = clock.getElapsedTime()
@@ -51,6 +57,7 @@ onMounted(() => {
     <!-- <Reverb :time="time" :volume="props.volume" /> -->
     <Bars :volume="props.volume" />
     <!-- <GridBars :volume="props.volume" /> -->
+    <!-- <Trails /> -->
   </div>
 </template>
 
