@@ -32,9 +32,6 @@ const initThree = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
 
-  const controls = new OrbitControls( camera, renderer.domElement );
-  controls.update()
-
   const clock = new THREE.Clock()
   const animate = () => {
     time = clock.getElapsedTime()
