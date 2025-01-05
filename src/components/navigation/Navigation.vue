@@ -2,11 +2,12 @@
     import { inject } from 'vue';
     const normalized = inject('normalized')
     const bars = inject('bars')
+    const gridBars = inject('gridBars')
 
     const  selectItem = (item) => {
-        console.log(normalized)
         normalized.value = false
         bars.value = false
+        gridBars.value = false
 
         item.value = true
     }
@@ -34,6 +35,16 @@
                 }"
             >
                 <font-awesome-icon :icon="['far','square']" />
+            </div>
+            <div 
+                @click="selectItem(gridBars)" 
+                class="h-[50px] w-full cursor-pointer border border-2 flex justify-center items-center hover:text-[#ffffc5] hover:border-[#ffffc5]"
+                :class="{
+                    'text-[#7bcceb] border-[#7bcceb]': gridBars.value,
+                    'border-white text-white' : !gridBars.value
+                }"
+            >
+                <font-awesome-icon :icon="['fas','cubes']" />
             </div>
         </div>
     </div>

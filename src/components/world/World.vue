@@ -14,12 +14,13 @@ const props = defineProps({
 
 let scene = new THREE.Scene()
 let time = ref(0)
-let camera, renderer;
+let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+let renderer;
 
 provide('scene', scene);
+provide('camera', camera)
 
 const initThree = () => {
-  camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
   camera.position.z = 50;
 
   renderer = new THREE.WebGLRenderer();
@@ -31,6 +32,9 @@ const initThree = () => {
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
+
+  // const controls = new OrbitControls(camera, renderer.domElement)
+  // controls.update()
 
   const clock = new THREE.Clock()
   const animate = () => {
@@ -53,7 +57,7 @@ onMounted(() => {
     <Normalize :time="time" :volume="props.volume" />
     <!-- <Reverb :time="time" :volume="props.volume" /> -->
     <Bars :volume="props.volume" />
-    <!-- <GridBars :volume="props.volume" /> -->
+    <GridBars :volume="props.volume" />
     <!-- <Trails /> -->
   </div>
 </template>
