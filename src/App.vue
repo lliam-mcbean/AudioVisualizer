@@ -9,20 +9,25 @@ import { reactive } from 'vue';
 
 const message = ref('')
 const volume = ref(0)
+const score = reactive({value: null})
+provide('score', score)
+provide('message', message)
 
 const normalized = reactive({ value: false });
 const bars = reactive({value: false})
 const gridBars = reactive({value: false})
 const reverb = reactive({value: false})
+const snake = reactive({value: false})
 
 provide('normalized', normalized)
 provide('bars', bars)
 provide('gridBars', gridBars)
 provide('reverb', reverb)
+provide('snake', snake)
 
-const shouldRenderDiv = computed(() => 
-  !normalized.value && !bars.value && !gridBars.value && !reverb.value
-);
+const shouldRenderDiv = computed(() => !normalized.value && !bars.value && !gridBars.value && !reverb.value);
+
+const shouldProvideScore = computed(() => score.value !== null)
 </script>
 
 <template>
@@ -32,7 +37,7 @@ const shouldRenderDiv = computed(() =>
     <Volume v-model="volume" />
   </Suspense>
   <div class="">
-    <World :volume="volume" />
+    <World :volume="volume" :message="message"/>
   </div>
   <div class="fixed pb-[200px] text-center text-white w-screen top-0 flex justify-center pt-[50px]">
       <div>
@@ -40,10 +45,16 @@ const shouldRenderDiv = computed(() =>
         <p>{{ message }}</p>
       </div>
   </div>
-  <div v-if="shouldRenderDiv" class="w-screen h-screen absolute top-0 left-0 flex justify-center items-center text-white text-2xl"> 
+  <!-- <div v-if="shouldRenderDiv" class="w-screen h-screen absolute top-0 left-0 flex justify-center items-center text-white text-2xl"> 
     <font-awesome-icon :icon="['fas', 'arrow-left']" />
     <div class="pl-4">
       Choose A Visualizer
+    </div>
+  </div> -->
+  <div v-if="shouldProvideScore" class="w-screen h-screen absolute top-0 left-0 flex justify-center items-end p-8 text-white text-2xl"> 
+    <div>Score: </div>
+    <div class="pl-4">
+      {{ score.value }}
     </div>
   </div>
 </template>

@@ -10,7 +10,8 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import Snake from './snake/Snake.vue';
 
 const props = defineProps({
-    volume: Number
+    volume: Number,
+    message: String,
 })
 
 let scene = new THREE.Scene()
@@ -60,7 +61,7 @@ onMounted(() => {
     <Bars :volume="props.volume" />
     <GridBars :volume="props.volume" />
     <!-- <Trails /> -->
-     <Snake />
+     <Snake :message="props.message" />
   </div>
 </template>
 
