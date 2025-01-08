@@ -80,7 +80,7 @@
                     'border-white text-white' : !cubeSnake.value
                 }"
             >
-                <font-awesome-icon :icon="['fas','rod-snake']" />
+                <font-awesome-icon :icon="['fab','codepen']" />
             </div>
         </div>
     </div>
