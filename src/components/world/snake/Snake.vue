@@ -140,6 +140,8 @@
                 food = {}
                 snake = {}
                 world = {}
+
+                score.value = null
             }
         })
     })
