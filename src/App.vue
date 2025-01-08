@@ -13,13 +13,15 @@ const volume = ref(0)
 const normalized = reactive({ value: false });
 const bars = reactive({value: false})
 const gridBars = reactive({value: false})
+const reverb = reactive({value: false})
 
 provide('normalized', normalized)
 provide('bars', bars)
 provide('gridBars', gridBars)
+provide('reverb', reverb)
 
 const shouldRenderDiv = computed(() => 
-  !normalized.value && !bars.value && !gridBars.value
+  !normalized.value && !bars.value && !gridBars.value && !reverb.value
 );
 </script>
 

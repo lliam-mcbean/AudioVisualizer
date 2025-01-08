@@ -34,8 +34,8 @@ const initThree = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
 
-  // const controls = new OrbitControls(camera, renderer.domElement)
-  // controls.update()
+  const controls = new OrbitControls(camera, renderer.domElement)
+  controls.update()
 
   const clock = new THREE.Clock()
   const animate = () => {
@@ -56,7 +56,7 @@ onMounted(() => {
 <template>
   <div>
     <Normalize :time="time" :volume="props.volume" />
-    <!-- <Reverb :time="time" :volume="props.volume" /> -->
+    <Reverb :time="time" :volume="props.volume" />
     <Bars :volume="props.volume" />
     <GridBars :volume="props.volume" />
     <!-- <Trails /> -->
