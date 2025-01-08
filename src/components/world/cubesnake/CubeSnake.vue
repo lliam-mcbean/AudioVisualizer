@@ -135,17 +135,28 @@ import { LineGeometry, LineMaterial } from 'three/examples/jsm/Addons.js';
 
                 
                 world.material = new LineMaterial({
-                    color: 0x0000ff,
-                    linewidth: 0.001
+                    color: '#7bcceb',
+                    linewidth: 0.002
                 });
                 world.points =  points.map((el)  => new THREE.Vector3(...el))
                 world.geometry = new LineGeometry().setFromPoints(world.points)
+                world.cube = new THREE.Mesh(
+                    new THREE.BoxGeometry(30, 30, 30),
+                    new THREE.ShaderMaterial({
+                        fragmentShader,
+                        vertexShader,
+                        transparent: true,
+                        depthWrite: true,
+                        blending: THREE.AdditiveBlending
+                    })
+                )
+                world.cube.position.set(0,0,-15)
                 world.mesh = new Line2(world.geometry, world.material)
 
                 snake.geometry = new THREE.BoxGeometry(0.9, 0.9, 0.9)
                 snake.material = new THREE.MeshBasicMaterial({color:  'green'})
                 snake.meshes = [new THREE.Mesh(snake.geometry, snake.material)]
-                scene.add(snake.meshes[0], food.mesh, world.mesh)
+                scene.add(snake.meshes[0], food.mesh, world.mesh, world.cube)
 
                 snake.nextPosition = []
 

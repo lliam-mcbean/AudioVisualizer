@@ -53,12 +53,12 @@ const shouldProvideScore = computed(() => score.value !== null)
       Choose A Visualizer
     </div>
   </div>
-  <!-- <div v-if="shouldProvideScore" class="w-screen h-screen absolute top-0 left-0 flex justify-center items-end p-8 text-white text-2xl"> 
+  <div v-if="shouldProvideScore" class="w-screen h-screen absolute top-0 left-0 flex justify-center items-end p-8 text-white text-2xl"> 
     <div>Score: </div>
     <div class="pl-4">
       {{ score.value }}
     </div>
-  </div> -->
+  </div>
 </template>
 
 <style scoped>
