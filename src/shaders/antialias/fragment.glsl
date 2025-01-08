@@ -12,5 +12,5 @@
       
       vec3 c = mix(vec3(1), vec3(0), a);
       
-      gl_FragColor = vec4(c, 1.0);
+      gl_FragColor = vec4(c, a);
     }

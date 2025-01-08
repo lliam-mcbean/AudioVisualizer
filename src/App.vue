@@ -18,14 +18,16 @@ const bars = reactive({value: false})
 const gridBars = reactive({value: false})
 const reverb = reactive({value: false})
 const snake = reactive({value: false})
+const cubeSnake = reactive({value: false})
 
 provide('normalized', normalized)
 provide('bars', bars)
 provide('gridBars', gridBars)
 provide('reverb', reverb)
 provide('snake', snake)
+provide('cubeSnake', cubeSnake)
 
-const shouldRenderDiv = computed(() => !normalized.value && !bars.value && !gridBars.value && !reverb.value);
+const shouldRenderDiv = computed(() => !normalized.value && !bars.value && !gridBars.value && !reverb.value && !snake.value && !cubeSnake.value);
 
 const shouldProvideScore = computed(() => score.value !== null)
 </script>
@@ -45,18 +47,18 @@ const shouldProvideScore = computed(() => score.value !== null)
         <p>{{ message }}</p>
       </div>
   </div>
-  <!-- <div v-if="shouldRenderDiv" class="w-screen h-screen absolute top-0 left-0 flex justify-center items-center text-white text-2xl"> 
+  <div v-if="shouldRenderDiv" class="w-screen h-screen absolute top-0 left-0 flex justify-center items-center text-white text-2xl"> 
     <font-awesome-icon :icon="['fas', 'arrow-left']" />
     <div class="pl-4">
       Choose A Visualizer
     </div>
-  </div> -->
-  <div v-if="shouldProvideScore" class="w-screen h-screen absolute top-0 left-0 flex justify-center items-end p-8 text-white text-2xl"> 
+  </div>
+  <!-- <div v-if="shouldProvideScore" class="w-screen h-screen absolute top-0 left-0 flex justify-center items-end p-8 text-white text-2xl"> 
     <div>Score: </div>
     <div class="pl-4">
       {{ score.value }}
     </div>
-  </div>
+  </div> -->
 </template>
 
 <style scoped>

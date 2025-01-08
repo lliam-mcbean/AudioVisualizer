@@ -8,6 +8,7 @@ import GridBars from './gridbars/GridBars.vue';
 import Trails from './trails/Trails.vue';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import Snake from './snake/Snake.vue';
+import CubeSnake from './cubesnake/CubeSnake.vue';
 
 const props = defineProps({
     volume: Number,
@@ -62,6 +63,7 @@ onMounted(() => {
     <GridBars :volume="props.volume" />
     <!-- <Trails /> -->
      <Snake :message="props.message" />
+     <CubeSnake :message="props.message" />
   </div>
 </template>
 

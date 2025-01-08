@@ -5,6 +5,7 @@
     const gridBars = inject('gridBars')
     const reverb = inject('reverb')
     const snake = inject('snake')
+    const cubeSnake =  inject('cubeSnake')
 
     const  selectItem = (item) => {
         normalized.value = false
@@ -12,6 +13,7 @@
         gridBars.value = false
         reverb.value = false
         snake.value = false
+        cubeSnake.value = false
 
         item.value = true
     }
@@ -66,6 +68,16 @@
                 :class="{
                     'text-[#7bcceb] border-[#7bcceb]': snake.value,
                     'border-white text-white' : !snake.value
+                }"
+            >
+                <font-awesome-icon :icon="['fas','rod-snake']" />
+            </div>
+            <div 
+                @click="selectItem(cubeSnake)" 
+                class="h-[50px] w-full cursor-pointer border border-2 flex justify-center items-center hover:text-[#ffffc5] hover:border-[#ffffc5]"
+                :class="{
+                    'text-[#7bcceb] border-[#7bcceb]': cubeSnake.value,
+                    'border-white text-white' : !cubeSnake.value
                 }"
             >
                 <font-awesome-icon :icon="['fas','rod-snake']" />
