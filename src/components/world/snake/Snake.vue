@@ -33,6 +33,17 @@
         }
     })
 
+    const resetGame = () => {
+        const segment = snake.meshes[0]
+        segment.position.set(0,0,0)
+
+        snake.meshes.forEach((mesh) => scene.remove(mesh))
+        snake.meshes = [segment]
+        snake.nextPosition = []
+
+        scene.add(snake.meshes[0])
+    }
+
     onMounted(() => {
         watch(() => isSnake.value, (val) => {
             if (val) {
@@ -96,15 +107,14 @@
                                 }
 
                                 if (Math.abs(mesh.position.x) > 15 || Math.abs(mesh.position.y) > 15) {
-                                    const segment = snake.meshes[0]
-                                    segment.position.set(0,0,0)
+                                    resetGame()
+                                }
 
-                                    snake.meshes.forEach((mesh) => scene.remove(mesh))
-                                    snake.meshes = [segment]
-                                    snake.nextPosition = []
-
-                                    scene.add(snake.meshes[0])
-                            
+                                for (let j = 0; j < snake.meshes.length; j++) {
+                                    let comparedMesh = snake.meshes[j]
+                                    if (comparedMesh.position.equals(mesh.position) && i !== j) {
+                                        resetGame()
+                                    }
                                 }
                             } else if (i === snake.nextPosition.length) {
                                 mesh.position.set(...snake.nextPosition[i - 1])
