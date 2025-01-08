@@ -40,12 +40,12 @@ const shouldRenderDiv = computed(() =>
         <p>{{ message }}</p>
       </div>
   </div>
-  <div v-if="shouldRenderDiv" class="w-screen h-screen absolute top-0 left-0 flex justify-center items-center text-white text-2xl"> 
+  <!-- <div v-if="shouldRenderDiv" class="w-screen h-screen absolute top-0 left-0 flex justify-center items-center text-white text-2xl"> 
     <font-awesome-icon :icon="['fas', 'arrow-left']" />
     <div class="pl-4">
       Choose A Visualizer
     </div>
-  </div>
+  </div> -->
 </template>
 
 <style scoped>
