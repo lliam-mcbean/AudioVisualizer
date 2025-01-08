@@ -7,9 +7,11 @@ import Bars from './bars/Bars.vue';
 import GridBars from './gridbars/GridBars.vue';
 import Trails from './trails/Trails.vue';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import Snake from './snake/Snake.vue';
 
 const props = defineProps({
-    volume: Number
+    volume: Number,
+    message: String,
 })
 
 let scene = new THREE.Scene()
@@ -58,7 +60,8 @@ onMounted(() => {
     <Reverb :time="time" :volume="props.volume" />
     <Bars :volume="props.volume" />
     <GridBars :volume="props.volume" />
-    <Trails :volume="props.volume" />
+    <!-- <Trails /> -->
+     <Snake :message="props.message" />
   </div>
 </template>
 
