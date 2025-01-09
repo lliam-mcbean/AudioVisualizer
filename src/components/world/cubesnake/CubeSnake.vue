@@ -173,7 +173,26 @@ import { LineGeometry, LineMaterial } from 'three/examples/jsm/Addons.js';
                                 mesh.position.set(mesh.position.x + direction.x, mesh.position.y + direction.y, mesh.position.z + direction.z)
 
                                 if (mesh.position.equals(food.mesh.position)) {
-                                    food.mesh.position.set(Math.floor((Math.random() - 0.5) * 30), Math.floor((Math.random() - 0.5) * 30), 0)
+                                    const random = Math.random() * 6; 
+
+                                    if (random < 1) {
+                                        food.mesh.position.set(Math.floor((Math.random() - 0.5) * 30), Math.floor((Math.random() - 0.5) * 30), 0)
+                                    }
+                                    if (random < 2 && random > 1) {
+                                        food.mesh.position.set(Math.floor((Math.random() - 0.5) * 30), 15, -Math.floor((Math.random()) * 30))
+                                    }
+                                    if (random < 3 && random > 2) {
+                                        food.mesh.position.set(Math.floor((Math.random() - 0.5) * 30), Math.floor((Math.random() - 0.5) * 30), -30)
+                                    }
+                                    if (random < 4 && random > 3) {
+                                        food.mesh.position.set(Math.floor((Math.random() - 0.5) * 30), 15, -Math.floor((Math.random()) * 30))
+                                    }
+                                    if (random < 5 && random > 4) {
+                                        food.mesh.position.set(-15, Math.floor((Math.random() - 0.5) * 30), -Math.floor((Math.random()) * 30))
+                                    }
+                                    if (random < 6 && random > 5) {
+                                        food.mesh.position.set(15, Math.floor((Math.random() - 0.5) * 30), -Math.floor((Math.random()) * 30))
+                                    }
 
                                     const segment = new THREE.Mesh(snake.geometry, snake.material)
                                     segment.position.set(snake.meshes[snake.meshes.length - 1].position.x - direction.x, snake.meshes[snake.meshes.length - 1].position.y - direction.y, 0 )
@@ -182,10 +201,6 @@ import { LineGeometry, LineMaterial } from 'three/examples/jsm/Addons.js';
                                     snake.meshes = [...snake.meshes, segment]
                                     scene.add(snake.meshes[snake.meshes.length - 1])
                                 }
-
-                                // if (Math.abs(mesh.position.x) > 15 || Math.abs(mesh.position.y) > 15) {
-                                //     resetGame()
-                                // }
 
                                 if (faces[1]) {
                                     if (mesh.position.y === 15) {
@@ -375,7 +390,7 @@ import { LineGeometry, LineMaterial } from 'three/examples/jsm/Addons.js';
                 cancelAnimationFrame(animationId)
 
                 snake.meshes.forEach((mesh) => scene.remove(mesh))
-                scene.remove(food.mesh, world.mesh)
+                scene.remove(food.mesh, world.mesh, world.cube)
 
                 camera.position.set(0,0,50)
                 camera.lookAt(0,0,0)
