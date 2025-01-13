@@ -66,7 +66,7 @@ onMounted(() => {
     <Reverb :time="time" :volume="props.volume" />
     <Bars :volume="props.volume" />
     <GridBars :volume="props.volume" />
-    <!-- <Trails /> -->
+    <Trails :volume="props.volume" />
      <Snake :message="props.message" />
      <CubeSnake :message="props.message" />
      <Fire :volume="props.volume" />

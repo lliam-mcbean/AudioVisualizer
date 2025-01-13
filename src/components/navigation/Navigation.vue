@@ -8,6 +8,7 @@
     const snake = inject('snake')
     const cubeSnake =  inject('cubeSnake')
     const fire = inject('fire')
+    const particles = inject('particles')
 
     const  selectItem = (item) => {
         normalized.value = false
@@ -17,6 +18,7 @@
         snake.value = false
         cubeSnake.value = false
         fire.value = false
+        particles.value = false
 
         item.value = true
     }
@@ -94,6 +96,16 @@
                 }"
             >
                 <font-awesome-icon :icon="['fas','fire']" />
+            </div>
+            <div 
+                @click="selectItem(particles)" 
+                class="h-[50px] w-full cursor-pointer border border-2 flex justify-center items-center hover:text-[#ffffc5] hover:border-[#ffffc5]"
+                :class="{
+                    'text-[#7bcceb] border-[#7bcceb]': particles.value,
+                    'border-white text-white' : !particles.value
+                }"
+            >
+                <font-awesome-icon :icon="['fas','asterisk']" />
             </div>
         </div>
     </div>

@@ -53,7 +53,7 @@
             material.uniforms.uVelocity.value = THREE.MathUtils.lerp(
                 material.uniforms.uVelocity.value,
                 3 + props.volume / 80,
-                0.1
+                0.01
             )
             mesh.scale.x = THREE.MathUtils.lerp(mesh.scale.x, 1 + props.volume / 30, 0.1)
 
