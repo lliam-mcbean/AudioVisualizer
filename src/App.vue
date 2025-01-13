@@ -19,6 +19,7 @@ const gridBars = reactive({value: false})
 const reverb = reactive({value: false})
 const snake = reactive({value: false})
 const cubeSnake = reactive({value: false})
+const fire = reactive({value: false})
 
 provide('normalized', normalized)
 provide('bars', bars)
@@ -26,8 +27,9 @@ provide('gridBars', gridBars)
 provide('reverb', reverb)
 provide('snake', snake)
 provide('cubeSnake', cubeSnake)
+provide('fire', fire)
 
-const shouldRenderDiv = computed(() => !normalized.value && !bars.value && !gridBars.value && !reverb.value && !snake.value && !cubeSnake.value);
+const shouldRenderDiv = computed(() => !normalized.value && !fire.value && !bars.value && !gridBars.value && !reverb.value && !snake.value && !cubeSnake.value);
 
 const shouldProvideScore = computed(() => score.value !== null)
 </script>

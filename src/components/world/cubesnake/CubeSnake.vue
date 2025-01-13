@@ -4,7 +4,7 @@
     import fragmentShader from '../../../shaders/threealias/fragment.glsl'
     import vertexShader from '../../../shaders/threealias/vertex.glsl'
     import { Line2 } from 'three/examples/jsm/lines/webgpu/Line2.js';
-import { LineGeometry, LineMaterial } from 'three/examples/jsm/Addons.js';
+    import { LineGeometry, LineMaterial } from 'three/examples/jsm/Addons.js';
 
 
     const scene = inject('scene')
@@ -54,16 +54,36 @@ import { LineGeometry, LineMaterial } from 'three/examples/jsm/Addons.js';
         const words = val.toLowerCase().split(' ')
 
         if (words.includes('up')) {
-            direction.set(0,1,0)
+            if (faces[1] || faces[3] || faces[5] || faces[6]) {
+                direction.set(0,1,0)
+            }
+            if (faces[2] || faces[4]) {
+                direction.set(0,0,-1)
+            }
         }
         if (words.includes('down')) {
-            direction.set(0,-1,0)
+            if (faces[1] || faces[3] || faces[5] || faces[6]) {
+                direction.set(0,-1,0)
+            }
+            if (faces[2] || faces[4]) {
+                direction.set(0,0,1)
+            }
         }
         if (words.includes('right')) {
-            direction.set(1,0,0)
+            if (faces[1] || faces[2] || faces[3] || faces[4]) {
+                direction.set(1,0,0)
+            }
+            if (faces[5] || faces[6]) {
+                direction.set(0,0,-1)
+            }
         }
         if (words.includes('left')) {
-            direction.set(-1,0,0)
+            if (faces[1] || faces[2] || faces[3] || faces[4]) {
+                direction.set(-1,0,0)
+            }
+            if (faces[5] || faces[6]) {
+                direction.set(0,0,1)
+            }
         }
     })
 

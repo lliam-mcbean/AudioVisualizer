@@ -1,11 +1,13 @@
 <script setup>
     import { inject } from 'vue';
+
     const normalized = inject('normalized')
     const bars = inject('bars')
     const gridBars = inject('gridBars')
     const reverb = inject('reverb')
     const snake = inject('snake')
     const cubeSnake =  inject('cubeSnake')
+    const fire = inject('fire')
 
     const  selectItem = (item) => {
         normalized.value = false
@@ -14,6 +16,7 @@
         reverb.value = false
         snake.value = false
         cubeSnake.value = false
+        fire.value = false
 
         item.value = true
     }
@@ -81,6 +84,16 @@
                 }"
             >
                 <font-awesome-icon :icon="['fab','codepen']" />
+            </div>
+            <div 
+                @click="selectItem(fire)" 
+                class="h-[50px] w-full cursor-pointer border border-2 flex justify-center items-center hover:text-[#ffffc5] hover:border-[#ffffc5]"
+                :class="{
+                    'text-[#7bcceb] border-[#7bcceb]': fire.value,
+                    'border-white text-white' : !fire.value
+                }"
+            >
+                <font-awesome-icon :icon="['fas','fire']" />
             </div>
         </div>
     </div>

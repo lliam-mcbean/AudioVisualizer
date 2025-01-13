@@ -9,6 +9,8 @@ import Trails from './trails/Trails.vue';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import Snake from './snake/Snake.vue';
 import CubeSnake from './cubesnake/CubeSnake.vue';
+import { AmbientLight } from 'three';
+import Fire from './fire/Fire.vue';
 
 const props = defineProps({
     volume: Number,
@@ -30,14 +32,17 @@ const initThree = () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
+  const ambientLight = new THREE.AmbientLight(0x404040, 10)
+  scene.add(ambientLight)
+
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
 
-  // const controls = new OrbitControls(camera, renderer.domElement)
-  // controls.update()
+  const controls = new OrbitControls(camera, renderer.domElement)
+  controls.update()
 
   const clock = new THREE.Clock()
   const animate = () => {
@@ -64,6 +69,7 @@ onMounted(() => {
     <!-- <Trails /> -->
      <Snake :message="props.message" />
      <CubeSnake :message="props.message" />
+     <Fire :volume="props.volume" />
   </div>
 </template>
 
