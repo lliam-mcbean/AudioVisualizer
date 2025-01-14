@@ -11,6 +11,7 @@ import Snake from './snake/Snake.vue';
 import CubeSnake from './cubesnake/CubeSnake.vue';
 import { AmbientLight } from 'three';
 import Fire from './fire/Fire.vue';
+import Boids from './boids/Boids.vue';
 
 const props = defineProps({
     volume: Number,
@@ -67,9 +68,10 @@ onMounted(() => {
     <Bars :volume="props.volume" />
     <GridBars :volume="props.volume" />
     <Trails :volume="props.volume" />
-     <Snake :message="props.message" />
-     <CubeSnake :message="props.message" />
-     <Fire :volume="props.volume" />
+    <Snake :message="props.message" />
+    <CubeSnake :message="props.message" />
+    <Fire :volume="props.volume" />
+    <Boids />
   </div>
 </template>
 
