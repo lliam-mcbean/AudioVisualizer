@@ -31,7 +31,7 @@ provide('cubeSnake', cubeSnake)
 provide('fire', fire)
 provide('particles', particles)
 
-const shouldRenderDiv = computed(() => !normalized.value && !fire.value && !bars.value && !gridBars.value && !reverb.value && !snake.value && !cubeSnake.value);
+const shouldRenderDiv = computed(() => !normalized.value && !particles.value && !fire.value && !bars.value && !gridBars.value && !reverb.value && !snake.value && !cubeSnake.value);
 
 const shouldProvideScore = computed(() => score.value !== null)
 </script>
