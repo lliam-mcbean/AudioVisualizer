@@ -24,9 +24,10 @@
     onMounted(() => {
         watch(() => gridBars.value, (val) => {
             if (val) {
-                if(camera)
+                if(camera) {
                     camera.position.set(30,30,30)
-                camera.lookAt(0,0,0)
+                    camera.lookAt(0,0,0)
+                }
 
                 const geometry = new THREE.BoxGeometry(1,10,1)
                 const material = new THREE.ShaderMaterial({
@@ -60,19 +61,16 @@
                     const time = clock.getElapsedTime();
 
                     meshes.forEach((mesh) => {
-                        // Calculate distance from the center
                         let distance = mesh.position.distanceTo({ x: 0, y: 0, z: 0 });
 
-                        // Map the distance to create an offset based on volume
                         let offset = mapRange(distance, 0, 30, 5, -5);
                         let mappedDistance = mapRange(distance, 0, 30, 1, 0)
                         let mappedVolume = mapRange(props.volume, 0, 50, 0, 2)
 
-                        // Calculate the ripple effect based on the volume and distance
-                        let rippleRadius = props.volume; // Adjust propagation speed
-                            // Slow down the ripple by dividing the time and/or offset by a factor
-                            let angle = (rippleRadius - distance) * 0.1 + time * 0.5 + offset ;
-                            mesh.scale.set(1, (lerp(mesh.scale.y, Math.sin(angle), 0.08) - (mappedDistance * 0.5) * mappedVolume), 1); // Create the ripple effect
+                        let rippleRadius = props.volume; 
+                            
+                        let angle = (rippleRadius - distance) * 0.1 + time * 0.5 + offset ;
+                        mesh.scale.set(1, (lerp(mesh.scale.y, Math.sin(angle), 0.08) - (mappedDistance * 0.5) * mappedVolume), 1); // Create the ripple effect
 
                     });
 

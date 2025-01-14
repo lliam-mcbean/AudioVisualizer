@@ -21,6 +21,7 @@ const snake = reactive({value: false})
 const cubeSnake = reactive({value: false})
 const fire = reactive({value: false})
 const particles = reactive({value: false})
+const boids = reactive({value: false})
 
 provide('normalized', normalized)
 provide('bars', bars)
@@ -30,8 +31,9 @@ provide('snake', snake)
 provide('cubeSnake', cubeSnake)
 provide('fire', fire)
 provide('particles', particles)
+provide('boids', boids)
 
-const shouldRenderDiv = computed(() => !normalized.value && !particles.value && !fire.value && !bars.value && !gridBars.value && !reverb.value && !snake.value && !cubeSnake.value);
+const shouldRenderDiv = computed(() => !boids.value && !normalized.value && !particles.value && !fire.value && !bars.value && !gridBars.value && !reverb.value && !snake.value && !cubeSnake.value);
 
 const shouldProvideScore = computed(() => score.value !== null)
 </script>
@@ -51,12 +53,12 @@ const shouldProvideScore = computed(() => score.value !== null)
         <p>{{ message }}</p>
       </div>
   </div>
-  <!-- <div v-if="shouldRenderDiv" class="w-screen h-screen absolute top-0 left-0 flex justify-center items-center text-white text-2xl"> 
+  <div v-if="shouldRenderDiv" class="w-screen h-screen absolute top-0 left-0 flex justify-center items-center text-white text-2xl"> 
     <font-awesome-icon :icon="['fas', 'arrow-left']" />
     <div class="pl-4">
       Choose A Visualizer
     </div>
-  </div> -->
+  </div>
   <div v-if="shouldProvideScore" class="w-screen h-screen absolute top-0 left-0 flex justify-center items-end p-8 text-white text-2xl"> 
     <div>Score: </div>
     <div class="pl-4">

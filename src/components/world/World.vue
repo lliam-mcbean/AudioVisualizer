@@ -71,7 +71,7 @@ onMounted(() => {
     <Snake :message="props.message" />
     <CubeSnake :message="props.message" />
     <Fire :volume="props.volume" />
-    <Boids />
+    <Boids :volume="props.volume" />
   </div>
 </template>
 

@@ -9,8 +9,9 @@
     const cubeSnake =  inject('cubeSnake')
     const fire = inject('fire')
     const particles = inject('particles')
+    const boids = inject('boids')
 
-    const  selectItem = (item) => {
+    const selectItem = (item) => {
         normalized.value = false
         bars.value = false
         gridBars.value = false
@@ -19,6 +20,7 @@
         cubeSnake.value = false
         fire.value = false
         particles.value = false
+        boids.value = false
 
         item.value = true
     }
@@ -106,6 +108,16 @@
                 }"
             >
                 <font-awesome-icon :icon="['fas','asterisk']" />
+            </div>
+            <div 
+                @click="selectItem(boids)" 
+                class="h-[50px] w-full cursor-pointer border border-2 flex justify-center items-center hover:text-[#ffffc5] hover:border-[#ffffc5]"
+                :class="{
+                    'text-[#7bcceb] border-[#7bcceb]': boids.value,
+                    'border-white text-white' : !boids.value
+                }"
+            >
+                <font-awesome-icon :icon="['fas','crow']" />
             </div>
         </div>
     </div>
